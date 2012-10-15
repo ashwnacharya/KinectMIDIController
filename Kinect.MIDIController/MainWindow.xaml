@@ -1,0 +1,56 @@
+﻿<Window x:Class="Kinect.MIDIController.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kinect Virtual MIDI Controller"  ResizeMode="CanMinimize"  MinWidth="960" WindowStartupLocation="CenterScreen"    Icon="/Kinect.MIDIController;component/Kinect.ico" Loaded="Window_Loaded" Closed="Window_Closed" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel Name="spnlVideoPanels" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch"  Width="960">
+            <StackPanel Name="spnlVideoPanel" Orientation="Vertical" HorizontalAlignment="Left">
+                <CheckBox Name="chkDisplayVideo" TabIndex="11">Display Video</CheckBox>
+                <Image Name="imgVideoFrame" HorizontalAlignment="Left" VerticalAlignment="Top" Height="240" Width="320"></Image>
+            </StackPanel>
+            
+            <StackPanel Name="spnlDepthPanel" Orientation="Vertical" HorizontalAlignment="Right">
+                <CheckBox Name="chkDisplayDepth" TabIndex="12">Display Depth</CheckBox>
+                <Image Name="imgDepthFrame"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="240" Width="320"></Image>
+            </StackPanel>
+            <StackPanel Name="spnlSkeletonPanel" Orientation="Vertical" HorizontalAlignment="Center">
+                <CheckBox Name="chkDisplaySkeleton">Display Skeleton</CheckBox>
+                <Canvas Name="imgSkeletonFrame" Height="240" Background="Black" HorizontalAlignment="Center" Width="320"></Canvas>
+            </StackPanel>
+        </DockPanel>
+        <Label Content="Set Kinect MIDI Device" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="29,36,0,0" Name="label1" VerticalAlignment="Top" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Right" Margin="0,35,645,0" Name="cmbMIDIDevice" VerticalAlignment="Top" Width="148" IsReadOnly="True" TabIndex="0" />
+        <Label Content="Left Hand" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="168,67,0,0" Name="label3" VerticalAlignment="Top" Width="148" HorizontalContentAlignment="Center" />
+        <Label Content="Right Hand" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="420,67,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="X-Axis" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="19,138,0,0" Name="label6" VerticalAlignment="Top" Width="61" HorizontalContentAlignment="Center" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="254,138,0,0" Name="cmbLXController" VerticalAlignment="Top" Width="62" IsReadOnly="True" BorderBrush="Black" SelectionChanged="cmbLXController_SelectionChanged" TabIndex="3" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="376,138,0,0" Name="cmbRXChannel" VerticalAlignment="Top" Width="63" IsReadOnly="True" SelectionChanged="cmbRXChannel_SelectionChanged" TabIndex="4" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="254,208,0,0" Name="cmbLYController" VerticalAlignment="Top" Width="62" IsReadOnly="True" SelectionChanged="cmbLYController_SelectionChanged" TabIndex="7" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="470,208,0,0" Name="cmbRYController" VerticalAlignment="Top" Width="59" IsReadOnly="True" SelectionChanged="cmbRYController_SelectionChanged" TabIndex="9" />
+        <Label Content="Y-Axis" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="29,203,0,0" Name="label7" VerticalAlignment="Top" />
+        <Button Content="Start Sending MIDI Signals" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="272,267,0,0" Name="btnStart" VerticalAlignment="Top" Width="149" Click="btnStart_Click" Background="Lime" Padding="0" TabIndex="10" />
+
+        
+        <ComboBox Grid.Row="1" Height="24" HorizontalAlignment="Left" Margin="168,138,0,0" Name="cmbLXChannel" VerticalAlignment="Top" Width="61" SelectionChanged="cmbLXChannel_SelectionChanged" TabIndex="1" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="470,138,0,0" Name="cmbRXController" VerticalAlignment="Top" Width="61" SelectionChanged="cmbRXController_SelectionChanged" TabIndex="5" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="167,208,0,0" Name="cmbLYChannel" VerticalAlignment="Top" Width="62" SelectionChanged="cmbLYChannel_SelectionChanged" TabIndex="6" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="376,208,0,0" Name="cmbRYChannel" VerticalAlignment="Top" Width="63" SelectionChanged="cmbRYChannel_SelectionChanged" TabIndex="8" />
+        <Label Content="Channel" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="168,101,0,0" Name="label4" VerticalAlignment="Top" Width="57" HorizontalContentAlignment="Center" />
+        <Label Content="Controller" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="254,101,0,0" Name="label8" VerticalAlignment="Top" Width="62" HorizontalContentAlignment="Center" />
+        <Label Content="Channel" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="376,101,0,0" Name="label9" VerticalAlignment="Top" Width="57" Grid.Row="1" />
+        <Label Content="Controller" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="462,101,0,0" Name="label10" VerticalAlignment="Top" Width="62" Grid.Row="1" />
+        <Slider Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="167,169,0,0" Name="sliderLX" VerticalAlignment="Top" Width="149" Maximum="127" ValueChanged="sliderLX_ValueChanged" />
+        <Slider Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="168,238,0,0" Name="sliderLY" VerticalAlignment="Top" Width="148" Maximum="127" ValueChanged="sliderLY_ValueChanged" />
+        <Slider Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="376,168,0,0" Name="sliderRX" VerticalAlignment="Top" Width="153" Maximum="127" ValueChanged="sliderRX_ValueChanged" />
+        <Slider Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="376,239,0,0" Name="sliderRY" VerticalAlignment="Top" Width="153" Maximum="127" ValueChanged="sliderRY_ValueChanged" />
+        <Button Content="Rescan" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="330,34,0,0" Name="btnRefreshMIDIDevices" VerticalAlignment="Top" Width="75" Click="btnRefreshMIDIDevices_Click" />
+    </Grid>
+</Window>
+    
